@@ -42,9 +42,9 @@ type PublicContext = DirectionProperty &
      */
     index: number
     /**
-     * The amount of space between slides.
+     * The amount of space between slides as number in pixels.
      */
-    spacing: string
+    spacing: number
     /**
      * Function called when the slide changes.
      */

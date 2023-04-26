@@ -9,7 +9,7 @@ import { useControls } from "../hooks/use-controls"
 export default function Page() {
   const controls = useControls(carouselControls)
 
-  const [state, send] = useMachine(carousel.machine({ id: useId(), index: 1 }), {
+  const [state, send] = useMachine(carousel.machine({ id: useId(), index: 1, spacing: 32, slidesPerView: 2 }), {
     context: controls.context,
   })
 

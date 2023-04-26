@@ -9,11 +9,18 @@ export const getAlignment = (containerSize: number) => ({
 export const getViewPercent = (containerSize: number, slideSize: number) => (slideSize / containerSize) * 100
 
 export const getScrollSnap = (ctx: MachineContext) => {
-  const containerRect = ctx.containerRect
+  const { spacing, slidesPerView, containerRect } = ctx
+
+  const totalSpacing = spacing * (slidesPerView - 1)
+
+  console.log({ totalSpacing })
+
   if (!containerRect) return []
   const snaps = ctx.slideRects
-    .map((rect) => containerRect[ctx.startEdge] - rect[ctx.startEdge])
+    // 332 - 332 + 32px
+    .map((rect) => containerRect[ctx.startEdge] - rect[ctx.startEdge] + spacing)
     .map((snap) => -Math.abs(snap))
 
+  console.log({ snaps })
   return snaps
 }
